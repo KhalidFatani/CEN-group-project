@@ -60,15 +60,32 @@ public class Game {
     public String[] getUserColors(String[] colors)
     {
         String[] userColors = new String[6];
-        
-        System.out.println("\nColor options: Red, Blue, Green, Yellow, Purple, Orange");
-        
-        for(int i = 0; i < 6; i++)
+        boolean error;
+        do
         {
-            System.out.println("Enter your guess for slot " + (i + 1) + ": ");
-            userColors[i] = scnr.nextLine();
-        }
-        System.out.println("");
+            error = false;
+            try{
+                System.out.println("\nColor options: Red, Blue, Green, Yellow, Purple, Orange");
+
+                for(int i = 0; i < 6; i++)
+                {
+                    System.out.println("Enter your guess for slot " + (i + 1) + ": ");
+                    userColors[i] = scnr.nextLine();
+                    
+                    if(!(userColors[i].equalsIgnoreCase("red")) && !(userColors[i].equalsIgnoreCase("blue")) &&
+                            !(userColors[i].equalsIgnoreCase("green")) && !(userColors[i].equalsIgnoreCase("yellow")) &&
+                            !(userColors[i].equalsIgnoreCase("purple")) && !(userColors[i].equalsIgnoreCase("orange")))
+                    {
+                        error = true;
+                        throw new Exception("error");
+                    }
+                }
+                System.out.println("");
+            }
+            catch(Exception e){
+                System.out.println("\nThere was an error with your input, try again.");
+            }
+        }while(error == true);
         
         return userColors;
     }
