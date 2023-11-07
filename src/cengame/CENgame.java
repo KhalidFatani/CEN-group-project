@@ -13,20 +13,26 @@ import java.util.Random;
 public class CENgame {
 
     /**
+     * main method will call other methods from all classes.
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        CENgame cg = new CENgame();
-        int[] numbers = new int[6];
-        String[] colors = new String[6];
+        CENgame cg = new CENgame(); //new instance of the program for better runtime
+        int[] numbers = new int[6]; //will be filled with random numbers to generate the colors
+        String[] colors = new String[6]; // will hold the colors that the user must guess
         
-        cg.generateNumbers(numbers); 
-        colors = cg.numToColor(numbers);
-        //System.out.println(colors[0] + colors[1] + colors[2] + colors[3] + colors[4] + colors[5]); //remove comment to see correct colors.
-        Game game = new Game();
-        game.playGame(colors);
+        cg.generateNumbers(numbers); //method call to generate numbers randomly
+        colors = cg.numToColor(numbers); // method call to convert the numbers ^^ into colors
+        System.out.println(colors[0] + colors[1] + colors[2] + colors[3] + colors[4] + colors[5]); //remove comment to see correct colors.
+        Game game = new Game(); //new game instance
+        game.playGame(colors); //starts the game and passes the colors
     }
     
+    /**
+     * generates random numbers
+     * @param a
+     * @return 
+     */
     public int[] generateNumbers(int[] a)
     {
         Random ran = new Random();
@@ -40,6 +46,11 @@ public class CENgame {
         return a;
     }
     
+    /**
+     * converts numbers to colors
+     * @param a
+     * @return 
+     */
     public String[] numToColor(int[] a)
     {
         String[] b = new String[6];
